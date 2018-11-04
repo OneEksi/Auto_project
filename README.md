@@ -1,4 +1,4 @@
-# Java basic template
+# Java application for car shop
 
 This example shows how to run Auto project with Java programming language using Maven, Servlets, JDBC, JSP and MySQL.
 
