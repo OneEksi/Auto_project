@@ -27,6 +27,17 @@
         <servlet-name>ViewTable</servlet-name>
         <url-pattern>/view</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>UpdateTable</servlet-name>
+        <servlet-class>com.auto.servlets.UpdateTable</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <!--
+        связывает url uodate с сервлетом updatetable
+        -->
+        <servlet-name>UpdateTable</servlet-name>
+        <url-pattern>/update</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>default</servlet-name>
         <url-pattern>*.js</url-pattern>
