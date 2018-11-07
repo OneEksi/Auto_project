@@ -122,7 +122,9 @@ function CreateDropdown()
        document.getElementsByTagName("body")[0].appendChild(dd);
    } else {
        //eldd.innerHTML = "";
-       eldd.outerHTML = dd.outerHTML;
+       var pe= eldd.parentElement;
+       pe.removeChild(eldd);
+       pe.appendChild(dd);
        //eldd.appendChild(dd);}
    }
 
@@ -178,8 +180,9 @@ function CreateDropdown()
        if (eldd === null){
            document.getElementsByTagName("body")[0].appendChild(dd);
        } else {
-
-           eldd.outerHTML = dd.outerHTML;
+           var pe= eldd.parentElement;
+           pe.removeChild(eldd);
+           pe.appendChild(dd);
            //eldd.appendChild(dd);
        }
 

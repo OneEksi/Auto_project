@@ -3,6 +3,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <script
+          src="https://code.jquery.com/jquery-3.3.1.js"
+          integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+          crossorigin="anonymous"></script>
   <link rel="stylesheet" href="resources/css/style.css" />
   <title>Convert JSON Data to HTML Table</title>
   <!-- Latest compiled and minified CSS -->
@@ -18,15 +22,16 @@
 
 </head>
 <body>
-<input type="button" class="btn btn-lg btn-info" onclick="GetJson(0);" value="Car Model" />
-<input type="button" class="btn btn-lg btn-info" onclick="GetJson(1);" value="Customers" />
-<input type="button" class="btn btn-lg btn-info" onclick="GetJson(2);" value="Employees" />
-<input type="button" class="btn btn-lg btn-info" onclick="GetJson(3);" value="Employees Statistics" />
-<input type="button" class="btn btn-lg btn-info" onclick="GetJson(4);" value="Sales" />
+<input type="button" class="btn btn-lg btn-warning" onclick="GetJson(0);" value="Car Model" />
+<input type="button" class="btn btn-lg btn-warning" onclick="GetJson(1);" value="Customers" />
+<input type="button" class="btn btn-lg btn-warning" onclick="GetJson(2);" value="Employees" />
+<input type="button" class="btn btn-lg btn-warning" onclick="GetJson(3);" value="Employees Statistics" />
+<input type="button" class="btn btn-lg btn-warning" onclick="GetJson(4);" value="Sales" />
 
 <p id="showData"></p>
 <input type="button" class="btn btn-sm btn-success" onclick="CreateDropdown();" value="ADD" />
 <input type="button" class="btn btn-sm btn-danger" onclick="CreateDDDel();" value="Delete" />
+
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
