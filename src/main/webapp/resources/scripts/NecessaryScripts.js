@@ -75,5 +75,37 @@ function UpdateTable (id,content) {
     xmlhttp.send(JSON.stringify(data));
 }
 function CreateDropdown() {
-    UpdateTable(3,{"idEmployee":39,"NumberOfSales":38,"AmountOfSales": 8745});
-}
+    var dd = document.createElement("div");
+    dd.id="ddmenu";
+    for (var i =0; i<columnNames.length;i++){
+        var el = document.createElement("p");
+       el.innerHTML= columnNames[i] ;
+       dd.appendChild(el);
+       var text = document.createElement("input");
+       text.type="text";
+       text.id =columnNames[i];
+       el.appendChild(text);
+
+    }
+
+    var button = document.createElement("input");
+    button.type = "button";
+    button.value = "Apply";
+    button.onclick =function(){
+        var colNV = {};
+        for (var key in columnNames) {
+            colNV[columnNames[key]] = document.getElementById(columnNames[key]).value;
+
+        }
+        UpdateTable(tableId,colNV);
+        GetJson(tableId);
+    };
+    dd.appendChild(button);
+
+   var eldd= document.getElementById(dd.id) ;
+   if (eldd === null){
+       document.getElementsByTagName("body")[0].appendChild(dd);
+   } else { eldd.innerHTML= "";
+   eldd.appendChild(dd);}
+
+   }

@@ -34,7 +34,7 @@
 
 <p id="showData"></p>
 <input type="button" onclick="CreateDropdown();" value="ADD" />
-<input type="button" onclick="CreateDropdown();" value="Sales" />
+<input type="button" onclick="CreateDropdown();" value="Delete" />
 
 </body>
 

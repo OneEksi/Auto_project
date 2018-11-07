@@ -1,9 +1,12 @@
 package com.auto.DAO;
 
 import com.auto.models.*;
+import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -100,5 +103,49 @@ public class DAO {
         return  employeeStats;
 
     }
+
+     private  static  String[] tables = {"auto", "customer", "employees", "new_view", "sales"};//имена таблиц
+     public static void SaveDataToDB (Auto data, MysqlDataSource ds) throws  SQLException{
+         Connection conn = ds.getConnection();
+         Statement stmt = conn.createStatement();
+         ResultSet rs = stmt.executeQuery(String.format(
+                 "REPLACE INTO Auto SET idAuto =%d,Model = \"%s\", EngineCapacity = %f," +
+                         "EnginePower = %f,TypeOfShell = \"%s\",FuelType = \"%s\",AccelerationTime = %f," +
+                         "DriveUnit = \"%s\",Cost = %d",data.getIdAuto(),data.getModel(), data.getEngineCapacity(),
+                         data.getEnginePower(),data.getTypeOfShell(),data.getFuelType(),data.getAccelerationTime(),
+                 data.getDriveUnit(), data.getCost()));
+             
+         }
+        
+         
+    public static void SaveDataToDB (Employees data, MysqlDataSource ds) throws SQLException{
+        Connection conn = ds.getConnection();
+        Statement stmt = conn.createStatement();
+                   ResultSet rs = stmt.executeQuery(String.format(
+                    "REPLACE INTO Employees SET idEmployee =%d, LastName = \"%s\",FirstName= \"%s\",MiddleName= \"%s\"," +
+                            "ContTel= \"%s\",Address= \"%s\", Experience =\"%s\"", data.getIdEmployee(),data.getLastName(),
+                           data.getFirstName(),data.getMiddleName(), data.getContTel(),
+                           data.getAddress(),data.getExperience()));
+        }
+    
+
+    public static void SaveDataToDB (Sales data, MysqlDataSource ds) throws SQLException{
+        Connection conn = ds.getConnection();
+        Statement stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery(String.format(
+                "REPLACE INTO Sales SET idSales =%d, idCustomer =%d,idAuto=%d,idEmployee=%d,SaleDate=\"%s\"",data.getIdSales(),
+                data.getIdCustomer(),
+                data.getIdAuto(),data.getIdEmployee(),data.getSaleDate()));
+    }
+
+    public static void SaveDataToDB (Customer data, MysqlDataSource ds) throws SQLException{
+        Connection conn = ds.getConnection();
+        Statement stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery(String.format(
+             "REPLACE INTO  Customer SET idCustomer =%d, LastName = \"%s\",FirstName= \"%s\",MiddleName= \"%s\"," +
+                     "ContTel= \"%s\",Address= \"%s\"",data.getIdCustomer(),data.getLastName(), data.getFirstName(),
+                data.getMiddleName(),data.getContTel(),data.getAddress()));
+    }
+
 
 }
