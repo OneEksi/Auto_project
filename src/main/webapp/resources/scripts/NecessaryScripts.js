@@ -58,54 +58,129 @@ columnNames =col;
     divContainer.appendChild(table);
 }
 
-function UpdateTable (id,content) {
+function UpdateTable (content)
+{
 //Send data to server to update table
     var xmlhttp = new XMLHttpRequest();
     var url = "update";
 
     xmlhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-           alert("ok");
+        if (this.readyState === 4 && this.status === 200) {
+           //alert("ok");
+            GetJson(tableId);
         }
 
     };
     
-    var data = {"tableId": id,"content":content};
+    var data = {"tableId": tableId,"content":content};
     xmlhttp.open("POST", url, true);
     xmlhttp.send(JSON.stringify(data));
 }
-function CreateDropdown() {
+function CreateDropdown()
+
+{
     var dd = document.createElement("div");
     dd.id="ddmenu";
+    dd.className="panel panel-success";
+    var p_header = document.createElement("div");
+    p_header.className="panel-heading";
+    p_header.innerHTML="Add";
+    var p_body = document.createElement("div");
+
+
+
     for (var i =0; i<columnNames.length;i++){
-        var el = document.createElement("p");
+       var el = document.createElement("p");
        el.innerHTML= columnNames[i] ;
-       dd.appendChild(el);
        var text = document.createElement("input");
        text.type="text";
        text.id =columnNames[i];
        el.appendChild(text);
-
+       p_body.appendChild(el);
     }
 
     var button = document.createElement("input");
     button.type = "button";
     button.value = "Apply";
+    button.className="btn btn-xs btn-primary";
     button.onclick =function(){
         var colNV = {};
         for (var key in columnNames) {
             colNV[columnNames[key]] = document.getElementById(columnNames[key]).value;
 
         }
-        UpdateTable(tableId,colNV);
-        GetJson(tableId);
-    };
-    dd.appendChild(button);
+        UpdateTable(colNV);
 
+    };
+    p_body.appendChild(button);
+    dd.appendChild(p_header);
+    dd.appendChild(p_body);
+
+    //dd.appendChild(ul);
    var eldd= document.getElementById(dd.id) ;
    if (eldd === null){
        document.getElementsByTagName("body")[0].appendChild(dd);
-   } else { eldd.innerHTML= "";
-   eldd.appendChild(dd);}
+   } else {
+       //eldd.innerHTML = "";
+       eldd.outerHTML = dd.outerHTML;
+       //eldd.appendChild(dd);}
+   }
+
+   }
+
+   function DeleteRow(idRow) {
+       var xmlhttp = new XMLHttpRequest();
+       var url = "deleterow";
+
+       xmlhttp.onreadystatechange = function () {
+           if (this.readyState === 4 && this.status === 200) {
+               //alert("ok");
+               GetJson(tableId);
+           }
+
+       };
+
+       var data = {"tableId": tableId,"id":idRow};
+       xmlhttp.open("POST", url, true);
+       xmlhttp.send(JSON.stringify(data));
+
+   }
+   function CreateDDDel() {
+       var dd = document.createElement("div");
+       dd.id="ddmenu";
+       dd.className="panel panel-danger";
+       var p_header = document.createElement("div");
+       p_header.className="panel-heading";
+       p_header.innerHTML="Delete";
+       var p_body = document.createElement("div");
+
+       var el = document.createElement("p");
+       el.innerHTML= columnNames[0] ;
+
+       var text = document.createElement("input");
+       text.type="text";
+       text.id =columnNames[0];
+       el.appendChild(text);
+       p_body.appendChild(el);
+
+       var button = document.createElement("input");
+       button.type = "button";
+       button.value = "Apply";
+       button.className="btn btn-xs btn-primary";
+       button.onclick =function(){
+           DeleteRow(document.getElementById(columnNames[0]).value);
+
+       };
+       p_body.appendChild(button);
+       dd.appendChild(p_header);
+       dd.appendChild(p_body);
+       var eldd= document.getElementById(dd.id) ;
+       if (eldd === null){
+           document.getElementsByTagName("body")[0].appendChild(dd);
+       } else {
+
+           eldd.outerHTML = dd.outerHTML;
+           //eldd.appendChild(dd);
+       }
 
    }

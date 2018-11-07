@@ -147,5 +147,18 @@ public class DAO {
                 data.getMiddleName(),data.getContTel(),data.getAddress()));
     }
 
+    public  static  void  DeleteData (int tableId,MysqlDataSource ds,int idel) throws  SQLException{
+
+        String [] idnames = {"idAuto","idCustomer","idEmployees","","idSales"};
+        if (tableId == 3) {
+            return;
+        }
+        Connection conn = ds.getConnection();
+        Statement stmt = conn.createStatement();
+        System.out.println( String.format("DELETE  FROM %s WHERE %s=%d",tables[tableId],idnames[tableId],idel));
+        stmt.executeUpdate(String.format("DELETE  FROM %s WHERE %s=%d",
+                tables[tableId],idnames[tableId],idel));
+
+    }
 
 }

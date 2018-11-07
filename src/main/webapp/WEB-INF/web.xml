@@ -46,5 +46,25 @@
         <servlet-name>default</servlet-name>
         <url-pattern>*.css</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.jpg</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.png</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DeleteRow</servlet-name>
+        <servlet-class>com.auto.servlets.DeleteRow</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <!--
+        связывает url uodate с сервлетом updatetable
+        -->
+        <servlet-name>DeleteRow</servlet-name>
+        <url-pattern>/deleterow</url-pattern>
+    </servlet-mapping>
 
 </web-app>

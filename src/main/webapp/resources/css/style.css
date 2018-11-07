@@ -1,6 +1,29 @@
 html, body, #container {
-    width: 1600px;
-    height: 1067px;
+
     margin: 0;
     padding: 0;
+}
+ body { background: url("../images/car-logos.jpg");
+     background-repeat: no-repeat;
+     background-position-x: 23%;
+     background-position-y: 50%;
+ }
+th, td, p, input {
+    font:14px Verdana;
+}
+table, th, td
+{
+    margin-left: auto ;
+    margin-right: auto;
+    margin-top: 42px;
+    border: solid 3px #e0d666;
+    border-collapse: collapse;
+    padding: 2px 3px ;
+    text-align: center;
+}
+th {
+    font-weight:bold;
+}
+#ddmenu{
+    width: fit-content;
 }
